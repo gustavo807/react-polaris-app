@@ -14,8 +14,10 @@ import {
 } from '@shopify/polaris';
 import {ImportMinor} from '@shopify/polaris-icons';
 
-const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+import axios from 'axios'
 
+const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+const promise = (shouldFail, ms = 3000) => new Promise((resolve, reject) => setTimeout(shouldFail ? reject : resolve,ms))
 
 export default function App() {
   const [first, setFirst] = useState('');
@@ -61,10 +63,25 @@ export default function App() {
   );
 
   const onClick = () => {
-    setLoading(l => !l)
+    //setLoading(l => !l)
     console.log(first, last, email, checkboxes, connected)
     //setTimeout(()=>{setLoading(l => !l)}, 8000)
-    sleep(3000).then(()=>setLoading(l => !l))    
+    //sleep(3000).then(()=>setLoading(l => !l))    
+
+    const loadData = async () => {
+      try{
+        setLoading(true)
+        const result = await axios.get('https://jsonplaceholder.typicode.com/todos/1')
+        //await promise(true).then(data => console.log(data))
+        console.log(result)
+      }catch(err){
+        console.log(err)
+      }finally{
+        setLoading(false)
+      }      
+    }
+    loadData()
+
   }
 
   return (
