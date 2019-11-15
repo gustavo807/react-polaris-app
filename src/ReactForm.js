@@ -1,5 +1,5 @@
 import React from 'react';
-import {useField, useForm, notEmpty, lengthMoreThan,} from '@shopify/react-form';
+import {useField, useForm, notEmpty, lengthMoreThan, } from '@shopify/react-form';
 import { Page, Layout, FormLayout, Form, Card, TextField, ContextualSaveBar, Frame, Banner} from '@shopify/polaris';
 
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms))

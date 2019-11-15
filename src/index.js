@@ -6,12 +6,13 @@ import enTranslations from '@shopify/polaris/locales/en.json';
 import App from './App';
 import { SamplePage } from './SamplePage';
 import ReactForm from './ReactForm';
+import ContactForm from './ContactForm';
 
 
 function WrappedApp() {
     return (
       <AppProvider i18n={enTranslations}>
-        <ReactForm />
+        <ContactForm />
       </AppProvider>
     );
   }
